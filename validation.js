@@ -1,15 +1,21 @@
 // validation script here
 
 const inputs = document.querySelectorAll('input');
-console.log(inputs)
 const patterns = {
-    telephone: /^\d{11}$/
-
+    telephone: /^\d{11}$/,
+    username: /^[a-z0-9]{5,12}$/,
+    email: /^[a-z0-9\.-]+@[a-z0-9\.-]+\.[a-z]{2,8}(\.[a-z]{2,8})?$/,
+    password: /^[\w@-]{8,20}$/,
+    slug: /^([a-z0-9-]){8,20}$/
 }
 
 //validation
 function validate(field,regex){
-    console.log(regex.test(field.value));
+    if(regex.test(field.value)){
+        field.className = "valid";
+    }else{
+        field.className = "invalid";
+    }
 }
 
 inputs.forEach((input) => {
